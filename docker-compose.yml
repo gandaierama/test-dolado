@@ -15,11 +15,14 @@ services:
       PMA_PORT: ${MYSQL_PORT}
 
   db:
-    build: ./database
+    build:
+        context: ./src/database
+        target: development
+        dockerfile: Dockerfile
     image: mysql:5.7
     container_name: ${MYSQL_HOST}
     volumes:
-      - ./database/data:/var/lib/mysql
+      - ./src/database/data:/var/lib/mysql
     ports:
       - "${MYSQL_PORT}:${MYSQL_PORT}"
     environment:
@@ -28,7 +31,7 @@ services:
       MYSQL_DATABASE: ${MYSQL_DB_NAME}
 
   backend:
-    build: ./backend
+    build: .
     image: node:9-alpine
     working_dir: /app
     restart: always
@@ -40,7 +43,7 @@ services:
     ports:
       - "${PORT}:${PORT}"
     volumes:
-      - ./backend:/app
+      - ./:/app
     expose:
       - "${PORT}"
     command: 'yarn run start:dev'
