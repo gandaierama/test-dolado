@@ -22,14 +22,24 @@
 Mini API de e-commerce. Desenvolvido em Nest.js, base de dados em MySQL integrado com Sequelize, e deploy através do Docker.
 
 
-## Weekend Isues
+## Weekend Issues
 
 [X] - Create Repo
-[X] - Installation Nest.js 
+
+[X] - Installation Nest.js
+
+[X] - Create Resorces
+
+[X] - Integrate Swagger
+
 [ ] - CRUD
+
 [ ] - Dockerfile
+
 [ ] - docker-compose.yml
+
 [ ] - Documentation
+
 [ ] - Clean Code
 
 ## Installation
