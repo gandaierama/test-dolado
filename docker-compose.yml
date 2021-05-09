@@ -13,10 +13,14 @@ services:
     command: [nginx-debug, '-g', 'daemon off;']
 
   nest:
-    image: node:9-alpine
+    build: .
     restart: always
     env_file:
-      - .env
+      - dolado/.env
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "8080:8080"
     links:
       - database
     command: 'npm run start'

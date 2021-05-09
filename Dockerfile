@@ -1,21 +1,15 @@
 FROM node:9-alpine
 
-ADD ./dolado/src/package.json /app/
-WORKDIR /app
+WORKDIR /usr/src/app
+COPY dolado/package*.json ./
+RUN ls -al
 
-RUN yarn install --ignore-optional && yarn cache clean
-ADD ./dolado/src /app
+RUN npm install
 
-#Build
-RUN yarn prebuild && yarn build
+COPY . .
 
-FROM node:9-alpine
+RUN npm run-script build
 
-WORKDIR /app
+EXPOSE 8080
 
-ADD ./dolado/src/package.json /app/
-
-COPY --from=builder ./app ./
-RUN yarn install --ignore-optional
-
-CMD ["node", "dist/main"]
+CMD ["npm","start"]
