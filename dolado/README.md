@@ -42,15 +42,9 @@ Mini API de e-commerce. Desenvolvido em Nest.js, base de dados em MySQL integrad
 
 [ ] - Clean Code
 
-## Build
+## Installation
 
 ```bash
 $ docker-compose up -d
-```
-
-## Stop and remove container in compose
-
-```bash
-$ docker-compose down
 ```
 
