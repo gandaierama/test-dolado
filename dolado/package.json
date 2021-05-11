@@ -1,8 +1,8 @@
 {
-  "name": "adwords-report",
+  "name": "test-dolado",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "description": "Mini API de e-commerce. Desenvolvido em Nest.js, base de dados em MySQL integrado com Sequelize, e deploy através do Docker.",
+  "author": "Daniel Batista alvão",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {

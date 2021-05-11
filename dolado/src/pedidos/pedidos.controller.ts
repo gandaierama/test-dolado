@@ -31,4 +31,5 @@ export class PedidosController {
   remove(@Param('id') id: string) {
     return this.pedidosService.remove(+id);
   }
+
 }
