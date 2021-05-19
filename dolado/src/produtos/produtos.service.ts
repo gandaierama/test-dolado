@@ -1,10 +1,17 @@
 import { Injectable, Body, Logger,  Inject } from '@nestjs/common';
 import { CreateProdutoDto } from './dto/create-produto.dto';
 import { UpdateProdutoDto } from './dto/update-produto.dto';
+import { ProdutosM } from './produto.model';
+import { InjectModel } from '@nestjs/sequelize';
 
 @Injectable()
 export class ProdutosService {
   
+  constructor(
+    @InjectModel(ProdutosM)
+    private produtosModel: typeof ProdutosM
+    ) {}
+
   private readonly logger = new Logger(ProdutosService.name);
 
   
@@ -15,7 +22,7 @@ export class ProdutosService {
   }
 
   findAll() {
-    return `This action returns all produtos`;
+    return this.produtosModel.findAll();
   }
 
   findOne(id: number) {

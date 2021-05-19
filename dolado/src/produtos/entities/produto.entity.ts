@@ -17,5 +17,5 @@ export class Produtos {
   @Column({ nullable: true })
   foto: string;
   @Column({type: "datetime",
- default: () => "CURRENT_TIMESTAMP"}) date: Date
+  default: () => "CURRENT_TIMESTAMP"}) date: Date
 }
