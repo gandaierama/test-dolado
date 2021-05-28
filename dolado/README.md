@@ -32,11 +32,11 @@ Mini API de e-commerce. Desenvolvido em Nest.js, base de dados em MySQL integrad
 
 [X] - Integrate Swagger
 
-[ ] - CRUD
+[X] - CRUD
 
-[ ] - Dockerfile
+[X] - Dockerfile
 
-[ ] - docker-compose.yml
+[X] - docker-compose.yml
 
 [ ] - Documentation
 
@@ -47,4 +47,11 @@ Mini API de e-commerce. Desenvolvido em Nest.js, base de dados em MySQL integrad
 ```bash
 $ docker-compose up -d
 ```
+
+Access in browser: http://localhost:4000
+
+## Documentation
+
+Swagger in browser: http://localhost:4000/swagger	
+
 

@@ -14,30 +14,42 @@ export class ProdutosService {
 
   private readonly logger = new Logger(ProdutosService.name);
 
-  
+  ///////Criar Prroduto
   create(createProdutoDto: CreateProdutoDto) {
-
     this.logger.log(createProdutoDto);
-    return 'This action adds a new produto';
+    return this.produtosModel.create(createProdutoDto);
   }
 
+  ///////Listar Produtos
   findAll() {
     return this.produtosModel.findAll();
   }
 
-  findOne(id: number) {
+  ///////Localizar Produto
+  findOne(id) {
     this.logger.log(id);
-    return `This action returns a #${id} produto`;
+    return this.produtosModel.findOne(id);
   }
 
-  update(id: number, updateProdutoDto: UpdateProdutoDto) {
+  ///////Alterar Produto
+  update(id, updateProdutoDto: UpdateProdutoDto) {
     this.logger.log(id);
     this.logger.log(updateProdutoDto);
-    return `This action updates a #${id} produto`;
+    return this.produtosModel.update(updateProdutoDto, {
+      where: {
+        id: id
+      }
+    });
   }
 
-  remove(id: number) {
+  ///////Remover Produto
+  remove(id) {
     this.logger.log(id);
-    return `This action removes a #${id} produto`;
+    return  this.produtosModel.destroy({
+      where: {
+        id: id
+      }
+    });
   }
+
 }

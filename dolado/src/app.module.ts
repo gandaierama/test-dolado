@@ -4,23 +4,28 @@ import { AppService } from './app.service';
 import { ProdutosModule } from './produtos/produtos.module';
 import { PedidosModule } from './pedidos/pedidos.module';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { PedidosM } from './pedidos/pedido.model';
-import { ProdutosM } from './produtos/produto.model';
 import { ConfigModule } from '@nestjs/config';
+import * as env from 'dotenv';
+
+env.config();
+
 @Module({
   imports: [
-	  SequelizeModule.forRoot({
-		  useFactory: () => ({
-		    dialect: 'mysql',
-				host: process.env.MYSQL_HOST,
-				port: Number.parseInt(process.env.MYSQL_PORT, 10),
-				username: process.env.MYSQL_USER,
-				password: process.env.MYSQL_USER_PASS,
-				database: process.env.MYSQL_DB_NAME,
-				models: [PedidosM, ProdutosM],
-		  })
 
-		}),
+  	 SequelizeModule.forRoot({
+		dialect: 'mysql',
+		host: process.env.MYSQL_HOST,
+		port: Number.parseInt(process.env.MYSQL_PORT, 10),
+		username: process.env.MYSQL_USER,
+		password: process.env.MYSQL_ROOT_PASSWORD,
+		database: process.env.MYSQL_DATABASE,
+		synchronize: true,
+		logging: true,
+		autoLoadModels: true,
+		retryAttempts: 2,
+		retryDelay: 1000,
+    }),
+	  
   		ProdutosModule, 
   		PedidosModule
   	],

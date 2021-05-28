@@ -16,9 +16,9 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('Test Dolado')
-    .setDescription('The cats API description')
+    .setDescription('Teste de admissão Dolado')
     .setVersion('1.0')
-    .addTag('cats')
+    .addTag('dolado')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('swagger', app, document);

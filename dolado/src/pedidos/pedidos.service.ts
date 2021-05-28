@@ -6,37 +6,48 @@ import { InjectModel } from '@nestjs/sequelize';
 
 @Injectable()
 export class PedidosService {
-
   constructor(
     @InjectModel(PedidosM)
     private pedidosModel: typeof PedidosM,
-    ) {}
+  ) {}
 
   private readonly logger = new Logger(PedidosService.name);
 
-  
+  ///////Criar Pedido
   create(createPedidoDto: CreatePedidoDto) {
     this.logger.log(createPedidoDto);
-    return 'This action adds a new pedido';
+    return this.pedidosModel.create(createPedidoDto);
   }
 
+  ///////Listar Pedidos
   findAll() {
     return this.pedidosModel.findAll();
   }
 
-  findOne(id: number) {
+  ///////Localizar Pedido
+  findOne(id){
     this.logger.log(id);
-    return `This action returns a #${id} pedido`;
+    return this.pedidosModel.findOne(id);
   }
 
-  update(id: number, updatePedidoDto: UpdatePedidoDto) {
+  ///////Alterar Pedido
+  update(id, updatePedidoDto: UpdatePedidoDto) {
     this.logger.log(id);
     this.logger.log(updatePedidoDto);
-    return `This action updates a #${id} pedido`;
+    return this.pedidosModel.update(updatePedidoDto, {
+      where: {
+        id: id
+      }
+    });
   }
 
-  remove(id: number) {
+  ///////Deletar Pedido
+  remove(id) {
     this.logger.log(id);
-    return `This action removes a #${id} pedido`;
+    return  this.pedidosModel.destroy({
+      where: {
+        id: id
+      }
+    });
   }
 }
